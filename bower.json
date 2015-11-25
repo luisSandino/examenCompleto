@@ -1,0 +1,29 @@
+{
+  "name": "exam_1",
+  "version": "0.0.1",
+  "authors": [
+    "luisSandino <sandino.ruiz@gmail.com>"
+  ],
+  "description": "primer examen interactiva",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.2.3",
+    "iron-component-page": "PolymerElements/iron-component-page#1.0.0",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "jquery-ui": "jqueryui#~1.11.4",
+    "angular": "~1.4.8",
+    "angularfire": "~1.1.3",
+    "firebase": "~2.3.2"
+  }
+}

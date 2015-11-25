@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css">
+		<link rel="import" href="../my-button.html">
+		<link rel="import" href="../image-uploader.html">
+		<link rel="import" href="../my-video.html">
+		<link rel="import" href="../my-chat.html">
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../jquery/dist/jquery.min.js"></script>
+		<script src="../../jquery-ui/jquery-ui.min.js"></script>
+		<script src="../../angular/angular.min.js"></script>
+		<script src="../../firebase/firebase.js"></script>
+		<script src="../../angularfire/dist/angularfire.min.js"></script>
+		<script src="../../jquery/dist/jquery.js"></script>
+		<script src="../app.js"></script>
+		<script src="../controllers.js"></script>
+		<script src="../factory.js"></script>
+
+	<style>
+	  body{background-color: #CFD8DC;}
+	  .panelFoto{
+	  	width: 615px;
+	  	height: 615px;
+	  	background: #388edd;
+	  	margin: 20px;
+	  }
+	  
+	  .panelVideo{
+	  	width: 615px;
+	  	height: auto;
+	  	background: #9afd25;
+	  	margin: 10px;
+	  	text-align: center;
+	  }
+	  .myChat{
+	  	width: 650px;
+	  	height: auto;
+	  	background: #ce774c;
+	  	margin: 10px;
+	  	padding: 10px;
+	  }
+	  input,textarea {
+	  	margin: 20px;
+	  	width: 200px;
+	  	padding: 10px;
+	  	height: 40px;
+	  	
+	  }
+	  .panel-info{
+	  	width: 600px;
+	  	height:200px;
+	  
+	  	
+	  		  }
+	 .caja-mensaje {
+	  	width: 90%;
+	  	height: 315px;
+	  	margin: 0 auto;
+	  	background: #fff;
+	  	margin-top: 40px;
+	  	margin-bottom: 50px;
+	  	overflow-y: scroll;
+	  }	
+	  .caja-imagen {
+	  	width: 50%;
+	  	height: 315px;
+	  	margin: 0 ;
+	  	margin-top: 40px;
+	  	
+	  }	
+	  ul{
+	  	list-style-type: none;
+	  }
+	  .mibtn{
+	  	position: relative;
+	  }
+
+	 .main-nav{
+	 	background: #689F38;
+	 	width: 100%;
+	 	height: 90px;
+	 	text-align: right;
+	 }
+	 .main-nav>ul{
+	 	float: right;
+
+	 }
+	a>span>{
+		padding: 17px;
+	}
+			#cajaimg {
+				display: none;
+				width: 400px;
+				height: 300px;
+				margin-left: 60px;				
+			}
+
+	#player{
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	</style>
+
+	</head>
+	<body ng-app="chatApp" ng-controller="chatController">	
+		<header class="main-nav">
+			<ul class="nav nav-pills ">
+			  <li  class=" btn btn-lg"><a href ng-click="tab =1"><span class="glyphicon glyphicon-camera" ></span>Images</a></li>
+			  <li class=" btn btn-lg"><a href ng-click="tab =2"><span class="glyphicon glyphicon-play-circle" ></span>Video</a></li>
+			  <li class=" btn btn-lg"><a href ng-click="tab =3"><span class="glyphicon glyphicon-comment" ></span>Chat</a></li>
+			</ul>
+		</header>
+		<image-uploader ng-show="tab===1"></image-uploader>
+		<my-video ng-show="tab===2"></my-video>
+
+	<div class="myChat" ng-show="tab===3">
+
+			<div class="rooms">
+				<ul class="nav nav-pills ">
+				  <li  ><a class=" btn btn-warning" href ng-click="room =1">Sala amigos</a></li>
+				  <li ><a class=" btn btn-info" href ng-click="room =2">Sala enamorados</a></li>
+				  <li ><a class=" btn btn-danger" href ng-click="room =3">Sala fútbol</a></li>
+				</ul>
+			</div>
+			
+
+			<div class=" caja-mensaje " ng-show="room===1">
+				<ul >
+				<h5>Estas en sala amigos</h5>
+					<li ng-repeat="message in messages">
+
+					<span >{{message.name}} : {{message.text}}</span>
+					</li>
+				</ul>
+			</div>
+			
+			<div class=" caja-mensaje " ng-show="room===2">
+				<ul >
+				<h5>Estas en sala enamorados</h5>
+					<li ng-repeat="message in messages">
+					
+					<span >{{message.name}} : {{message.text}}</span>
+					</li>
+				</ul>
+			</div>
+			
+
+			<div class=" caja-mensaje " ng-show="room===3">
+				<ul >
+				<h5>Estas en sala fútbol</h5>
+					<li ng-repeat="message in messages">
+					
+					<span >{{message.name}} : {{message.text}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="container panel-info ">
+				<input type="text" ng-model="new.name" placeholder="Your name">
+				<textarea class="form-control" ng-model="new.text" placeholder="Your message"rows="2"></textarea>
+				<button ng-click= "send(new)" class= "btn btn-md btn-info">Send</button>
+			</div>
+
+
+			
+	</div>
+
+	
+
+	</body>
+</html>
+
+			

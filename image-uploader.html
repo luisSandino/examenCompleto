@@ -1,0 +1,41 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="image-uploader">
+
+	<template>
+	<div class="panelFoto">
+		<div class="  input-group">
+			<input type="text" class="form-control" placeholder="Enter URL image" id="basic-url">
+		</div>
+		
+		<div class=" caja-imagen ">
+			<img src="" id="cajaimg">
+	 	 	<my-button id="mibtn"> </my-button>	
+		</div>
+	</div>
+		
+		 
+		
+	</template>
+
+	<script>
+		Polymer({
+			is: 'image-uploader',
+
+			listeners: {
+		        'mibtn.click' : 'showImage',
+		    },
+
+		    showImage: function(e){
+		        var nuevoSrc = $("#basic-url").val();
+
+		       	$("#cajaimg").show();
+				$("#cajaimg").attr("src", nuevoSrc);
+	   		}
+		});
+		
+
+	</script>
+
+
+</dom-module>

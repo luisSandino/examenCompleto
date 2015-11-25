@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="my-video">
+
+	<template>
+		
+		<div class="panelVideo  ">
+		
+		 	 <input  type="text" placeholder="Enter id video" id="myVideo">
+		 		
+		  <div class="videoContenedor">
+				<div id="player"></div>
+				<my-button id="mibtn"> </my-button>
+			</div>
+			</div>
+
+
+		  
+	</template>
+
+	<script>
+		Polymer({
+			is: 'my-video',
+
+			listeners: {
+		        'mibtn.click'  : 'cambiaVideo',
+		    },
+		    cambiaVideo: function(e){
+		        player.loadVideoById($("#myVideo").val());
+		    }
+		});
+		var tag = document.createElement('script');
+		 tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		var player;
+		function onYouTubeIframeAPIReady() {
+		 player = new YT.Player('player', {
+		 height: '390',
+		 width: '400',
+		 myVideo: ''
+		 });
+		 };		 
+		
+	</script>
+
+
+</dom-module>
